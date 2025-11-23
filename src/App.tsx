@@ -11,6 +11,9 @@ import TrainingLibrary from "./pages/TrainingLibrary";
 import CommunityForum from "./pages/CommunityForum";
 import DailyJournal from "./pages/DailyJournal";
 import ScreeningTools from "./pages/ScreeningTools";
+import AIInsights from "./pages/AIInsights";
+import ActivityGenerator from "./pages/ActivityGenerator";
+import AITraining from "./pages/AITraining";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +33,9 @@ const App = () => (
             <Route path="training" element={<TrainingLibrary />} />
             <Route path="community" element={<CommunityForum />} />
             <Route path="journal" element={<DailyJournal />} />
+            <Route path="ai-insights" element={<AIInsights />} />
+            <Route path="activity-generator" element={<ActivityGenerator />} />
+            <Route path="ai-training" element={<AITraining />} />
           </Route>
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
