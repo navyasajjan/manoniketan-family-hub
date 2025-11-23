@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { ClipboardCheck, Brain, MessageSquare, Activity, AlertCircle } from "lucide-react";
+import { ClipboardCheck, Brain, MessageSquare, Activity, AlertCircle, Sparkles } from "lucide-react";
+import AIInsightCard from "@/components/AIInsightCard";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -103,6 +104,17 @@ const ScreeningTools = () => {
             </div>
           </CardHeader>
         </Card>
+
+        <AIInsightCard
+          title="Screening Recommendation"
+          type="suggestion"
+          insight="Based on your child's age (18 months) and recent milestone data, we recommend completing the M-CHAT-R screening. Early detection can help guide the best support plan."
+          action={{
+            label: "Start Screening",
+            onClick: () => {},
+          }}
+          className="mb-6"
+        />
 
         <div className="grid md:grid-cols-2 gap-6">
           {tools.map((tool) => {

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Check, Circle, Flag } from "lucide-react";
+import { Check, Circle, Flag, Sparkles } from "lucide-react";
+import AIInsightCard from "@/components/AIInsightCard";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -85,6 +86,12 @@ const MilestoneTracker = () => {
 
           {Object.entries(milestones).map(([ageGroup, items]) => (
             <TabsContent key={ageGroup} value={ageGroup} className="space-y-4 animate-fade-in">
+              <AIInsightCard
+                title="AI Analysis"
+                type="trend"
+                insight={`Based on current progress, your child is developing well for the ${items[0]?.ageRange} age range. Focus on encouraging verbal communication through play-based activities.`}
+                className="mb-4"
+              />
               <Card className="shadow-soft mb-4">
                 <CardHeader>
                   <CardTitle className="font-display">Age Range: {items[0]?.ageRange}</CardTitle>

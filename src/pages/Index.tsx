@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-import { Activity, Calendar, BookOpen, Users, FileText, TrendingUp, Bell, Upload, Stethoscope } from "lucide-react";
+import { Activity, Calendar, BookOpen, Users, FileText, TrendingUp, Bell, Upload, Stethoscope, Sparkles } from "lucide-react";
+import AIInsightCard from "@/components/AIInsightCard";
+import AIAssistant from "@/components/AIAssistant";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -74,6 +76,34 @@ const Index = () => {
             </div>
           </CardContent>
         </Card>
+
+        {/* AI Insights Section */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-display font-bold mb-4 flex items-center gap-2">
+            <Sparkles className="h-6 w-6 text-secondary" />
+            AI Insights
+          </h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            <AIInsightCard
+              title="Progress Alert"
+              type="success"
+              insight="Great news! Aarav has achieved 3 new milestones this month. His communication skills are showing excellent improvement with consistent therapy sessions."
+              action={{
+                label: "View Details",
+                onClick: () => {},
+              }}
+            />
+            <AIInsightCard
+              title="Therapy Recommendation"
+              type="suggestion"
+              insight="Based on recent journal entries, increasing sensory play activities by 15 minutes daily could help with focus. Consider scheduling a consultation with Dr. Sharma."
+              action={{
+                label: "Explore Activities",
+                onClick: () => {},
+              }}
+            />
+          </div>
+        </div>
 
         {/* Quick Actions Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
@@ -234,6 +264,7 @@ const Index = () => {
           </Card>
         </div>
       </div>
+      <AIAssistant />
     </div>
   );
 };
