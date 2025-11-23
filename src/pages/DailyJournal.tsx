@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Plus, TrendingUp, Smile, Frown, Meh, Utensils, Moon, Baby } from "lucide-react";
+import { Plus, TrendingUp, Smile, Frown, Meh, Utensils, Moon, Baby, Sparkles } from "lucide-react";
+import AIInsightCard from "@/components/AIInsightCard";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -91,6 +92,15 @@ const DailyJournal = () => {
           </TabsList>
 
           <TabsContent value="entries" className="space-y-4 animate-fade-in">
+            <AIInsightCard
+              title="Pattern Detected"
+              type="trend"
+              insight="Your child's sleep patterns have improved by 35% this month. Evening sensory activities seem to correlate with better sleep quality. Continue the 7 PM routine!"
+              action={{
+                label: "View Trends",
+                onClick: () => {},
+              }}
+            />
             {entries.map((entry) => (
               <Card key={entry.id} className="shadow-soft hover-lift">
                 <CardHeader>
