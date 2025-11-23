@@ -1,11 +1,14 @@
 import { NavLink } from "@/components/NavLink";
-import { Home, Activity, Calendar, BookOpen, Users, FileText, Stethoscope } from "lucide-react";
+import { Home, Activity, Calendar, BookOpen, Users, FileText, Stethoscope, Brain, Wand2, GraduationCap } from "lucide-react";
 
 const Navigation = () => {
   const navItems = [
     { to: "/", icon: Home, label: "Home" },
     { to: "/milestones", icon: Activity, label: "Milestones" },
     { to: "/screening", icon: Stethoscope, label: "Screening" },
+    { to: "/ai-insights", icon: Brain, label: "AI Insights" },
+    { to: "/activity-generator", icon: Wand2, label: "Activities" },
+    { to: "/ai-training", icon: GraduationCap, label: "AI Training" },
     { to: "/appointments", icon: Calendar, label: "Appointments" },
     { to: "/training", icon: BookOpen, label: "Training" },
     { to: "/community", icon: Users, label: "Community" },
