@@ -4,6 +4,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 interface Post {
   id: string;
@@ -19,6 +24,11 @@ interface Post {
 }
 
 const CommunityForum = () => {
+  const [isNewPostOpen, setIsNewPostOpen] = useState(false);
+  const [newPostTitle, setNewPostTitle] = useState("");
+  const [newPostContent, setNewPostContent] = useState("");
+  const [selectedGroup, setSelectedGroup] = useState("");
+
   const groups = [
     { name: "Speech Delay Support", members: 342, color: "bg-primary-light" },
     { name: "Autism Care", members: 589, color: "bg-accent-light" },
@@ -26,6 +36,15 @@ const CommunityForum = () => {
     { name: "Behavioral Support", members: 421, color: "bg-muted" },
     { name: "Parent Victories", members: 678, color: "bg-primary-light" },
   ];
+
+  const handleCreatePost = () => {
+    // Handle post creation logic here
+    console.log({ title: newPostTitle, content: newPostContent, group: selectedGroup });
+    setIsNewPostOpen(false);
+    setNewPostTitle("");
+    setNewPostContent("");
+    setSelectedGroup("");
+  };
 
   const [posts] = useState<Post[]>([
     {
@@ -89,10 +108,66 @@ const CommunityForum = () => {
             </h1>
             <p className="text-muted-foreground">Connect with other parents and share experiences</p>
           </div>
-          <Button className="gap-2">
-            <Plus className="h-4 w-4" />
-            New Post
-          </Button>
+          <Dialog open={isNewPostOpen} onOpenChange={setIsNewPostOpen}>
+            <DialogTrigger asChild>
+              <Button className="gap-2">
+                <Plus className="h-4 w-4" />
+                New Post
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-2xl">
+              <DialogHeader>
+                <DialogTitle className="font-display">Create New Post</DialogTitle>
+                <DialogDescription>
+                  Share your experiences, questions, or victories with the community
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-4 py-4">
+                <div className="space-y-2">
+                  <Label htmlFor="group">Discussion Group</Label>
+                  <Select value={selectedGroup} onValueChange={setSelectedGroup}>
+                    <SelectTrigger id="group">
+                      <SelectValue placeholder="Select a group" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {groups.map((group) => (
+                        <SelectItem key={group.name} value={group.name}>
+                          {group.name} ({group.members} members)
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="title">Post Title</Label>
+                  <Input
+                    id="title"
+                    placeholder="What's on your mind?"
+                    value={newPostTitle}
+                    onChange={(e) => setNewPostTitle(e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="content">Content</Label>
+                  <Textarea
+                    id="content"
+                    placeholder="Share your thoughts, experiences, or questions..."
+                    className="min-h-[150px]"
+                    value={newPostContent}
+                    onChange={(e) => setNewPostContent(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="flex justify-end gap-3">
+                <Button variant="outline" onClick={() => setIsNewPostOpen(false)}>
+                  Cancel
+                </Button>
+                <Button onClick={handleCreatePost} disabled={!newPostTitle || !newPostContent || !selectedGroup}>
+                  Post to Community
+                </Button>
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-6">
