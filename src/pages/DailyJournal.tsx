@@ -120,14 +120,14 @@ const DailyJournal = () => {
                 New Entry
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+            <DialogContent className="max-w-2xl max-h-[90vh] overflow-hidden flex flex-col">
               <DialogHeader>
                 <DialogTitle className="font-display">New Daily Entry</DialogTitle>
                 <DialogDescription>
                   Track your child's daily activities, mood, and progress
                 </DialogDescription>
               </DialogHeader>
-              <div className="space-y-6 py-4">
+              <div className="space-y-6 py-4 overflow-y-auto flex-1">
                 <div className="space-y-2">
                   <Label htmlFor="date">Date</Label>
                   <Input
@@ -225,7 +225,7 @@ const DailyJournal = () => {
                   />
                 </div>
               </div>
-              <div className="flex justify-end gap-3">
+              <div className="flex justify-end gap-3 border-t pt-4 mt-4 bg-background">
                 <Button variant="outline" onClick={() => setIsNewEntryOpen(false)}>
                   Cancel
                 </Button>

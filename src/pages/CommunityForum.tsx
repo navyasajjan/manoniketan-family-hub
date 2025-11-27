@@ -115,14 +115,14 @@ const CommunityForum = () => {
                 New Post
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-2xl">
+            <DialogContent className="max-w-2xl overflow-hidden flex flex-col">
               <DialogHeader>
                 <DialogTitle className="font-display">Create New Post</DialogTitle>
                 <DialogDescription>
                   Share your experiences, questions, or victories with the community
                 </DialogDescription>
               </DialogHeader>
-              <div className="space-y-4 py-4">
+              <div className="space-y-4 py-4 overflow-y-auto flex-1">
                 <div className="space-y-2">
                   <Label htmlFor="group">Discussion Group</Label>
                   <Select value={selectedGroup} onValueChange={setSelectedGroup}>
@@ -158,7 +158,7 @@ const CommunityForum = () => {
                   />
                 </div>
               </div>
-              <div className="flex justify-end gap-3">
+              <div className="flex justify-end gap-3 border-t pt-4 mt-4 bg-background">
                 <Button variant="outline" onClick={() => setIsNewPostOpen(false)}>
                   Cancel
                 </Button>
