@@ -14,6 +14,7 @@ import ScreeningTools from "./pages/ScreeningTools";
 import AIInsights from "./pages/AIInsights";
 import ActivityGenerator from "./pages/ActivityGenerator";
 import AITraining from "./pages/AITraining";
+import ProfileManagement from "./pages/ProfileManagement";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
             <Route path="ai-insights" element={<AIInsights />} />
             <Route path="activity-generator" element={<ActivityGenerator />} />
             <Route path="ai-training" element={<AITraining />} />
+            <Route path="profile-management" element={<ProfileManagement />} />
           </Route>
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
